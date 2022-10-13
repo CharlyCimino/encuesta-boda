@@ -1,10 +1,11 @@
-process.env.PORT = process.env.PORT || 3000;
-process.env.DATA_PATH = "../data/data.json";
 
+const path = require('path')
 const express = require("express");
 const bodyParser = require("body-parser");
-
 const { writeFile, readFile } = require("fs/promises");
+
+process.env.PORT = process.env.PORT || 3000;
+process.env.DATA_PATH = path.resolve(__dirname, '/data/data.json');
 
 const app = express();
 
