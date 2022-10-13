@@ -20,7 +20,7 @@ async function leer(filePath) {
   }
 }
 
-app.post("/voto", async (req, res) => {
+app.post("/api/voto", async (req, res) => {
   try {
     let { nombre, tipoPlato } = req.body;
     const nuevoVoto = {
@@ -38,7 +38,7 @@ app.post("/voto", async (req, res) => {
   }
 });
 
-app.get("/results", async (req, res) => {
+app.get("/api/results", async (req, res) => {
   const data =  JSON.parse(await leer(process.env.DATA_PATH));
   const tipos = ["CON_CARNE", "VEGANO", "APTO_CELIACO"];
   const cantsPorTipo = tipos.map((t) => {
