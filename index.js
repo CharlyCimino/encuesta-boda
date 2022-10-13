@@ -5,9 +5,9 @@ const bodyParser = require("body-parser");
 const { writeFile, readFile } = require("fs/promises");
 
 process.env.PORT = process.env.PORT || 3000;
-process.env.DATA_PATH = path.resolve(__dirname, '/data/data.json');
-
-const app = express();
+const DATA_PATH = path.join(__dirname, '/data/data.json');
+console.log(DATA_PATH);
+const app = express(); 
 
 const vots = [];
 app.use(bodyParser.json());
@@ -29,9 +29,9 @@ app.post("/api/voto", async (req, res) => {
       tipoPlato,
       fecha: new Date()
     };
-    const data = JSON.parse(await leer(process.env.DATA_PATH));
+    const data = JSON.parse(await leer(DATA_PATH));
     data.push(nuevoVoto);
-    await writeFile(process.env.DATA_PATH, JSON.stringify(data));
+    await writeFile(DATA_PATH, JSON.stringify(data));
     res.status(200).json(data);
   } catch (error) {
     console.log(error)
@@ -40,7 +40,7 @@ app.post("/api/voto", async (req, res) => {
 });
 
 app.get("/api/results", async (req, res) => {
-  const data =  JSON.parse(await leer(process.env.DATA_PATH));
+  const data =  JSON.parse(await leer(DATA_PATH));
   const tipos = ["CON_CARNE", "VEGANO", "APTO_CELIACO"];
   const cantsPorTipo = tipos.map((t) => {
     const filtrados = data.filter((v) => v.tipoPlato === t);
