@@ -51,7 +51,7 @@ app.post("/api/voto", async (req, res) => {
 app.get("/api/results", async (req, res) => {
   try {
     const data = await Voto.find({});
-    const tipos = ["CON_CARNE", "VEGANO", "APTO_CELIACO"];
+    const tipos = ["CON_CARNE", "VEGETARIANO", "APTO_CELIACO"];
     const cantsPorTipo = tipos.map((t) => {
       const filtrados = data.filter((v) => v.tipoPlato === t);
       return {
