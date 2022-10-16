@@ -19,7 +19,7 @@ console.log("ENV>", process.env.NODE_ENV);
 console.log("MONGO>", process.env.MONGODB_URI);
 const app = express();
 
-app.use(express.static('vercel_build_output/static'));
+app.use(express.static('.vercel_build_output/static'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
