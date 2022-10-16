@@ -1,9 +1,8 @@
-const path = require("path");
 const mongoose = require("mongoose");
 const express = require("express");
 const bodyParser = require("body-parser");
-const { writeFile, readFile } = require("fs/promises");
 const Voto = require("./models/Voto");
+
 
 process.env.PORT = process.env.PORT || 3000;
 process.env.NODE_ENV = process.env.NODE_ENV || "dev";
@@ -20,6 +19,7 @@ console.log("ENV>", process.env.NODE_ENV);
 console.log("MONGO>", process.env.MONGODB_URI);
 const app = express();
 
+app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -33,10 +33,10 @@ app.post("/api/voto", async (req, res) => {
       fecha: new Date(),
     });
     const result = await nuevoVoto.save();
-    res.status(200).json(result);
+    res.redirect('/gracias.html')
   } catch (error) {
     console.log(error);
-    res.status(500).json(error);
+    res.redirect('/error.html')
   }
 });
 

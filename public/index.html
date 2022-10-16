@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Boda</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Fuzzy+Bubbles:wght@400;700&family=Lato:wght@700"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/estilo.css" />
+  </head>
+  <body>
+    <div class="container mt-3">
+      <div class="firma w-50 m-auto"><img class="img-fluid" src="img/dyc.png" alt=""></div>
+    </div>    
+    <div class="container text-center mt-1">
+      <h1 class="fuzzy naranja-fuerte">PREGUNTAS DEL DÍA</h1>
+      <h1 class="fuzzy naranja-fuerte">♥</h1>
+    </div>
+    <div class="container mt-1">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-9 col-lg-8 col-xl-7 verde p-5">
+          <!-- 
+            action="http://localhost:3000/api/voto"
+            action="https://encuesta-boda.vercel.app/api/voto" -->
+          <form
+          
+            action="https://encuesta-boda.vercel.app/api/voto"
+            method="post"
+          >
+            <div class="mb-2 py-3">
+              <div class="bg-naranja-fuerte rounded p-1 text-center">
+                <label for="inputNombre" class="dancing form-label"
+                  >Nombre y apellido</label
+                >
+              </div>
+              <div class="rounded mt-2">
+                <input
+                placeholder="Ej: Lionel Messi"
+                autocomplete="off"
+                  type="text"
+                  name="nombre"
+                  class="form-control input-propio"
+                  id="inputNombre"
+                  required
+                />
+              </div>
+            </div>
+            <div class="mb-2 py-3">
+              <div class="bg-naranja-fuerte rounded p-1 text-center">
+                <label for="inputNombre" class="dancing form-label"
+                  >¿Qué menú preferís para la fiesta del 12-nov?</label
+                >
+              </div>
+              <div class="form-check bg-naranja mt-2 p-2 rounded">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  value="CON_CARNE"
+                  name="tipoPlato"
+                  id="radio1"
+                />
+                <label class="form-check-label" for="radio1"
+                  >&nbsp; Con Carne
+                </label>
+              </div>
+              <div class="form-check bg-naranja mt-2 p-2 rounded">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  value="VEGANO"
+                  name="tipoPlato"
+                  id="radio2"
+                />
+                <label class="form-check-label" for="radio2"
+                  >&nbsp; Vegano
+                </label>
+              </div>
+              <div class="form-check bg-naranja mt-2 p-2 rounded">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  value="APTO_CELIACO"
+                  name="tipoPlato"
+                  id="radio3"
+                />
+                <label class="form-check-label" for="radio3"
+                  >&nbsp; Apto celíaco
+                </label>
+              </div>
+            </div>
+            <div class="mb-2 py-3">
+              <div class="bg-naranja-fuerte rounded p-1 text-center">
+                <label for="textAreaCanciones" class="dancing form-label"
+                  >¿Qué canciones no pueden faltar?</label
+                >
+              </div>
+              <div class="rounded mt-2">
+                <textarea
+                autocomplete="off"
+                placeholder="Ej: Bombón asesino de Los Palmeras"
+                  type="text"
+                  name="canciones"
+                  class="form-control input-propio"
+                  id="textAreaCanciones"
+                  value=""
+                ></textarea>
+              </div>
+            </div>
+            <button type="submit" class="btn bg-naranja-fuerte text-light">Enviar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
