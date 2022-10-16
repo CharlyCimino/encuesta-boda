@@ -25,10 +25,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.post("/api/voto", async (req, res) => {
   try {
-    let { nombre, tipoPlato } = req.body;
+    let { nombre, tipoPlato, canciones } = req.body;
     const nuevoVoto = new Voto({
       nombre,
-      tipoPlato,
+      tipoPlato: tipoPlato || "Sin especificar",
+      canciones: canciones || "Sin especificar",
       fecha: new Date(),
     });
     const result = await nuevoVoto.save();
@@ -51,7 +52,11 @@ app.get("/api/results", async (req, res) => {
         votantes: filtrados.map((v) => v.nombre),
       };
     });
-    res.status(200).json(cantsPorTipo);
+    const lasCanciones = data.filter(d => d.canciones).map(d => {return {
+      nombre: d.nombre,
+      canciones: d.canciones
+    }});
+    res.status(200).json({cantsPorTipo, lasCanciones});
   } catch (e) {
     console.log(e);
     res.status(500).json(e);
