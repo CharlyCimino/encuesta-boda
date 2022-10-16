@@ -19,16 +19,12 @@ console.log("ENV>", process.env.NODE_ENV);
 console.log("MONGO>", process.env.MONGODB_URI);
 const app = express();
 
-app.use(express.static('.vercel_build_output/static'));
+app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/', (req,res) => {
   res.redirect('index.html')
-})
-
-app.get('/gracias', (req,res) => {
-  res.redirect('.vercel_build_output/static/gracias.html')
 })
 
 app.post("/api/voto", async (req, res) => {
