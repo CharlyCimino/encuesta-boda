@@ -27,6 +27,10 @@ app.get('/', (req,res) => {
   res.redirect('index.html')
 })
 
+app.get('/gracias', (req,res) => {
+  res.redirect('.vercel_build_output/static/gracias.html')
+})
+
 app.post("/api/voto", async (req, res) => {
   try {
     let { nombre, tipoPlato, canciones } = req.body;
